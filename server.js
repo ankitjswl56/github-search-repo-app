@@ -1,6 +1,12 @@
 import express from 'express';
 
+import Search from './controllers/search.js';
+import RepoDetails from './controllers/repo_details.js';
+
 const app = express();
+
+app.use('/api', Search)
+app.use('/api', RepoDetails)
 
 
 app.get('/', async (req, res)=>{
