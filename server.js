@@ -1,9 +1,10 @@
 import express from 'express';
-
+import cors from 'cors';
 import Search from './controllers/search.js';
 import RepoDetails from './controllers/repo_details.js';
 
 const app = express();
+app.use(cors());
 
 app.use('/api', Search)
 app.use('/api', RepoDetails)

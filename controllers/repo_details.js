@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import axios from 'axios';
 import { repository_url } from '../http.js';
 
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -12,7 +11,9 @@ const router = express.Router();
 
 router.get('/repodetails', async (req,res)=>{
   try {
-    const response = await axios.get(`${repository_url}/ankitjswl56/alimente/commits`);
+    const owner = req.query.owner
+    const repo = req.query.repo
+    const response = await axios.get(`${repository_url}/${owner}/${repo}/commits`);
     res.send({
       status: 200,
       message: response.data
